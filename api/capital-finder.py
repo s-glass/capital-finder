@@ -18,21 +18,25 @@ class handler(BaseHTTPRequestHandler):
         self.headers.add_header("Content-type", "text/plain")
         self.end_headers()
 
-        word = dic["word"]
+        country = dic.get('country')
+        capital = dic.get('capital')
 
-        # create message
-        url = "https://api.dictionaryapi.dev/api/v2/entries/en/"
-
-        response = requests.get(url + word)
-        data = response.json()
-        definitions = []
-        for word_data in data:
-            definition = word_data["meanings"][0]["definitions"][0]["definition"]
-            definitions.append(definition)
-
-        message = str(definitions)
-
-        # respond with the formatted current time?
-        self.wfile.write(message.encode())
-
-        return
+        if country:
+            url = "https://restcountries.com/v3.1/name"
+            country_response = requests.get(url + country)
+            country_data = country_response.json()
+            capital_message = country_data[0]['capital'][0]
+            output_capital = str(f'The capital of {country} is {capital_message}')
+            display_capital_message = str(output_capital)
+            self.wfile.write(display_capital_message.encode())
+            return
+        
+        elif capital:
+            url ='https://restcountries.com/v3.1/capital'
+            capital_response = requests.get(url + capital)
+            capital_data = capital_response.json()
+            country_message = capital_data[0]['name']['common']
+            output_country = str(f'{capital} is the capital of {country_message}')
+            display_country_message = str{output_country}
+            self.wfile.write(display_country_message.encode())
+            return
