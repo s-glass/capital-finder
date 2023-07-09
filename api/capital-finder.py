@@ -19,7 +19,7 @@ class handler(BaseHTTPRequestHandler):
         capital = dic.get('capital')
 
         if country:
-            url = "https://restcountries.com/v3.1/name"
+            url = "https://restcountries.com/v3.1/name/"
             country_response = requests.get(url + country)
             country_data = country_response.json()
             capital_message = country_data[0]['capital'][0]
