@@ -29,7 +29,15 @@ No .env requirements; gitignore invludes venv.
 
 ## How to initialize/run your application
 
-* Deployed through Vercel: [https://capital-finder-teal-one.vercel.app/api/capital_finder](https://capital-finder-teal-one.vercel.app/api/capital_finder)
+* Deployed through Vercel:
+
+Delete and replace country or city to edit:
+
+Example for capital:
+[https://capital-finder-teal-one.vercel.app/api/capital-finder?capital=lima](https://capital-finder-teal-one.vercel.app/api/capital-finder?capital=lima)
+
+Example for country:
+[https://capital-finder-teal-one.vercel.app/api/capital-finder?country=peru](https://capital-finder-teal-one.vercel.app/api/capital-finder?country=peru)
 
 ## How to use your library
 The only library brought in was Requests
